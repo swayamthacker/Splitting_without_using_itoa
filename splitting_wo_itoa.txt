@@ -1,0 +1,95 @@
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
+
+using namespace std;
+int store;
+const int size = 5;
+int array[size];
+char a[size];
+char reg;
+void numtostring(int);
+void swap(char []);
+
+int main()
+{
+    int i;
+    cout<<"This is splitting WITHOUT Itoa"<<endl<<endl;
+    cout << "Please enter an integer" << endl;
+    cin>>store;
+
+    numtostring(store);
+
+    int begin = 0;
+    int end= size - 1;
+    char temp;
+    while(begin<=end)
+    {
+        temp = a[begin];
+        a[begin] = a[end];
+        a[end] = temp;
+        begin++;
+        end--;
+    }
+    //converting integer to a string array
+    //itoa(store,a,10);
+
+    {
+        cout<<"The character array is"<<endl;
+        for(int i = 0;i<size;i++)
+        {
+            cout<<a[i]<<" ";
+        }
+        cout<<endl;
+    }
+
+    //converting the string into an array of individual numbers.
+    for(int x = 0;x<size;x++)
+    {
+        //IN ASCII table, '0' corresponds to 48, 1 to 49, 2 to 50....hence for eg: integer 12345,
+        //the below command would do 49-48 for 1, which gives 1, 50-48 for 2 which gives 2....and so on.
+        i = a[x] - '0';
+        array[x] = i;
+    }
+
+
+        cout<<"The integer array is"<<endl;
+        for(int m = 0;m<size;m++)
+        {
+            cout<<array[m]<<" "<<endl;
+        }
+
+
+    //numtostring(store);
+    //swap(a[0])
+    return 0;
+}
+
+void numtostring(int n)
+{
+    int i = 0;
+   // char temp;
+    //int x = 0;
+    //int y = size;
+
+    while(n>0)
+    {
+        a[i] = n%10 + '0'; //think of '0' as adding the number 48.
+        n = n/10;
+        i++;
+    }
+}
+
+/*void swap(char a[])
+{
+    int begin = 0;
+    int end= size - 1;
+    char temp;
+    while(begin<=end)
+    {
+        temp = a[begin];
+        a[begin] = a[end];
+        a[end] = temp;
+    }
+}*/
+
